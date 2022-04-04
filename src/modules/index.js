@@ -1,7 +1,10 @@
 import { combineReducers } from "redux";
+import setAxios from "./setAxios";
+import useStateForInput from "./useStateForInput";
 
 const rootReducer = combineReducers({
-  // 리덕스 모듈들
+  setAxios,
+  useStateForInput,
 });
 
 export default rootReducer;
