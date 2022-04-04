@@ -1,5 +1,5 @@
 import axios from "axios";
-import useAsync from "./useAsync";
+import useAsync from "../useAsync";
 
 async function getUsers() {
   const response = await axios.get("http://localhost:8000/users");
