@@ -1,26 +1,21 @@
-import { NavLink, Outlet } from "react-router-dom";
+import React from "react";
 
-function AxiosFunction() {
+import { useSelector } from "react-redux";
+
+const AxiosFunction = () => {
+  const { posts } = useSelector((state) => ({ posts: state.Post.posts }));
+
+  console.log("posts", posts);
+
   return (
     <div>
-      <h1>Axios Function</h1>
-      <Outlet />
-      <ul>
-        <li>
-          <NavLink to="/axios/getusers">GET</NavLink>
+      {posts.map((item) => (
+        <li key={item.id}>
+          {item.id} <span>{item.title}</span>
         </li>
-        <li>
-          <NavLink to="/axios/postuser">POST</NavLink>
-        </li>
-        <li>
-          <NavLink to="/axios/putuser">PUT</NavLink>
-        </li>
-        <li>
-          <NavLink to="/axios/deleteuser">DELETE</NavLink>
-        </li>
-      </ul>
+      ))}
     </div>
   );
-}
+};
 
 export default AxiosFunction;
