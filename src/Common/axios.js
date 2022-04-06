@@ -22,3 +22,13 @@ export const onRequest = async () => {
     throw error.data;
   }
 };
+
+// axios 부분에서 나는 posts 만 사용해서 저렇게 한건데 나머지 다 불러올 때는 아래 같이 해두고 axios 쓸때 onRequest("/posts") onRequest("/photo") 이런식으로 하면 좀더 간결한 코드가 됨!
+
+// export const onRequest = async(url) => {
+//   try{
+//     return await instance.get(url);
+//   } catch(error){
+//     throw error.data;
+//   }
+// }
