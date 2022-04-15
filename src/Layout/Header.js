@@ -1,20 +1,20 @@
 import { useNavigate, Outlet } from "react-router-dom";
 
-function Header() {
+const Header = () => {
   const navigate = useNavigate();
 
-  const backward = () => {
+  function goBack() {
     navigate(-1);
-  };
+  }
 
-  const goHome = () => {
+  function goHome() {
     navigate("/");
-  };
+  }
 
   return (
     <div>
-      <header style={{ background: "lightgray", fontSize: 24, padding: 16 }}>
-        <button onClick={backward}>Backward</button>
+      <header>
+        <button onClick={goBack}>Go back</button>
         <button onClick={goHome}>Go Home</button>
       </header>
       <main>
@@ -22,6 +22,6 @@ function Header() {
       </main>
     </div>
   );
-}
+};
 
 export default Header;

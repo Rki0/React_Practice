@@ -1,11 +1,18 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useHome } from "./useHome";
 
 function Home() {
+  const { fetchPosts } = useHome();
+
+  useEffect(() => {
+    fetchPosts();
+  });
+
   return (
     <div>
-      <h1>Home page</h1>
-
-      <Link to="/axios">Axios Function</Link>
+      <h1>HomePage</h1>
+      <Link to="/posts">Posts List</Link>
     </div>
   );
 }

@@ -1,24 +1,26 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
+import rootReducer from "./Redux/index";
 import { createStore } from "redux";
-import rootReducer from "./modules";
 import { Provider } from "react-redux";
+import store from "./Redux/index";
 
-const store = createStore(rootReducer);
+// // 이 부분은 configureStore로 전환
+// const store = createStore(rootReducer);
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
         <App />
       </Provider>
     </BrowserRouter>
-  </React.StrictMode>,
-  document.getElementById("root")
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
