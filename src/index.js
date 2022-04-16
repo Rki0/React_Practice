@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import rootReducer from "./Redux/index";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import store from "./Redux/index";
+import { store } from "./Redux/index";
 
 // // 이 부분은 configureStore로 전환
 // const store = createStore(rootReducer);

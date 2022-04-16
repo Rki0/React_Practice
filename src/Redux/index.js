@@ -14,7 +14,13 @@ import postReducer from "./Post";
 // store를 생성하는 함수
 // rootReducer는 이제 필요 없는듯?
 // index.js에서 store를 바로 불러서 사용할 것임.
-export default configureStore({
+// export default configureStore({
+//   reducer: {
+//     post: postReducer,
+//   },
+// });
+
+export const store = configureStore({
   reducer: {
     post: postReducer,
   },

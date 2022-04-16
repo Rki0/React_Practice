@@ -56,11 +56,22 @@
 
 // createSlice 활용
 // 액션과 리듀서를 합쳐서 사용 가능
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { onRequest } from "../common/axios";
+
+export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
+  const response = await onRequest("/posts");
+  console.log("response", response);
+  if (response.status === 200) {
+    return response.data;
+  } else {
+    console.log("fail");
+  }
+});
 
 export const postSlice = createSlice({
   // store에 저장할 이름
-  name: "post",
+  name: "posts",
 
   // 초기 상태
   initialState: {
@@ -68,24 +79,14 @@ export const postSlice = createSlice({
   },
 
   // 액션과 리듀서가 들어가는 부분
-  reducers: {
-    // 액션 생성함수랑 리듀서랑 섞인 느낌
-    getPosts: {
-      reducer: (state, action) => {
-        // payload를 통해 액션으로 받아온 값을 사용할 수 있음. 이건 문법적인거라 기억해야함!
-        state.posts = action.payload;
-        console.log("getPosts on processing");
-        console.log(state.posts);
-      },
-      // prepare: (post) => ({
-      //   payload: {
-      //     post,
-      //   },
-      // }),
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchPosts.fulfilled, (state, action) => {
+      state.posts = action.payload;
+    });
   },
 });
 
 // 액션 함수, 리듀서 내보내기. 이것도 문법적인거라 기억!
-export const { getPosts } = postSlice.actions;
+// export const { getPosts } = postSlice.actions;
 export default postSlice.reducer;

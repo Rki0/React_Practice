@@ -12,9 +12,9 @@ instance.interceptors.response.use((response) => {
   return response;
 });
 
-export const onRequest = async () => {
+export const onRequest = async (url) => {
   try {
-    return await instance.get("/posts");
+    return await instance.get(url);
   } catch (e) {
     throw e.data;
   }
